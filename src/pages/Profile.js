@@ -68,7 +68,7 @@ const Profile = () => {
 		// 	business_phone: businessPhone,
 		// 	password,
 		// };
-	};
+	// };
 
 	return (
 		<div className="cover-page">
