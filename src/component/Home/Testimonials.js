@@ -1,7 +1,7 @@
 import React from "react";
 import LayoutHome from "./LayoutHome";
 import { motion } from "framer-motion";
-// import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 
 const testimonies = [
 	{
