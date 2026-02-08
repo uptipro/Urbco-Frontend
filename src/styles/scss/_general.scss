@@ -1,0 +1,183 @@
+body {
+	font-family: "Montserrat", sans-serif;
+	color: "#000";
+
+	&.noscroll {
+		overflow: hidden;
+	}
+}
+
+.cover-page {
+	.contacts {
+		background: #f5f5f5;
+		padding: 20px;
+		padding-top: 30px;
+	}
+}
+
+.content-fill {
+	margin-top: 30px;
+}
+
+.title {
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.write-up {
+	font-weight: normal;
+	font-size: 0.9rem;
+	text-align: justify;
+}
+
+.values {
+	h6 {
+		font-weight: 600;
+	}
+}
+
+.team {
+	padding-bottom: 60px;
+	.members {
+		display: flex;
+		overflow-x: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.member {
+			margin-right: 20px;
+
+			img {
+				height: 300px;
+				width: 300px;
+				display: inline-block;
+				margin-bottom: 10px;
+
+				@media (max-width: 567px) {
+					height: 250px;
+					width: 250px;
+				}
+			}
+
+			p {
+				margin: 0;
+				padding: 0;
+				margin-bottom: 1px;
+				font-size: 0.9rem;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+	}
+	.team--arrows {
+		margin: 20px 0;
+		text-align: center;
+
+		button {
+			background: #f5f5f5;
+			color: #000;
+			font-weight: 600;
+			font-size: 1.1rem;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			outline: 0;
+			margin: 0 10px;
+		}
+	}
+}
+
+.preloader {
+	height: 60vh;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+
+.payment {
+	p {
+		font-weight: 500;
+	}
+	button {
+		border: 0;
+		outline: 0;
+		margin-right: 20px;
+		padding: 10px 30px;
+		border-radius: 5px;
+		font-weight: 600;
+
+		&.main-btn {
+			background: $brand-color;
+			color: #fff;
+		}
+
+		&.cancel {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+.empty-page {
+	min-height: 40vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 30px;
+
+	p {
+		margin-top: 20px;
+		font-weight: 500;
+	}
+}
+
+.urb-accordion {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	.tb {
+		.head {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			padding: 10px 3px;
+			cursor: pointer;
+			width: 100%;
+			padding: 15px;
+
+			p {
+				font-weight: 600;
+				color: #000;
+				max-width: 90%;
+			}
+		}
+		.body {
+			padding: 15px;
+		}
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		.body {
+			padding: 15px 5px;
+		}
+	}
+	h6 {
+		color: $brand-color;
+		font-weight: 600;
+		font-size: 1.5rem;
+		margin: 20px 0;
+	}
+}
+
+.policy {
+	h6 {
+		color: $brand-color;
+		font-weight: 800;
+	}
+
+	ol {
+		margin: 0;
+		padding: 0;
+	}
+}

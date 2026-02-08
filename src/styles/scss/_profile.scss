@@ -1,0 +1,95 @@
+.app-profile {
+	margin-top: 30px;
+	.details {
+		display: flex;
+		justify-content: space-between;
+		align-items: last baseline;
+
+		.notify {
+			.notify-btn {
+				border: 0;
+				outline: 0;
+				background: none;
+
+				img {
+					height: 30px;
+				}
+			}
+		}
+
+		.names {
+			display: flex;
+
+			.init {
+				margin-right: 20px;
+				p {
+					text-align: end;
+					font-weight: 600;
+					font-size: 1.3rem;
+					margin: 0;
+					padding: 0;
+				}
+				.display {
+					display: flex;
+					align-items: center;
+					margin-top: 10px;
+					button {
+						border: 0;
+						outline: 0;
+						background: none;
+						margin-left: 20px;
+
+						&.edit-btn {
+							background: $brand-color;
+							color: #fff;
+							padding: 10px 30px;
+							font-weight: 500;
+							font-size: 0.9rem;
+						}
+						&.logout-btn {
+							background-color: #bbbbbb;
+							padding: 10px 20px;
+
+							img {
+								height: 20px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.initials {
+			background: $brand-color;
+			width: 100px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5rem;
+			color: #fff;
+			font-weight: bold;
+
+			@media (max-width: 991px) {
+				display: none;
+			}
+		}
+	}
+
+	.info {
+		margin-top: 30px;
+		.line {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+			padding-bottom: 3px;
+			h5 {
+				margin: 0;
+				padding: 0;
+				text-transform: uppercase;
+				font-size: 1rem;
+			}
+		}
+	}
+
+	.investments {
+		padding-top: 30px;
+	}
+}
