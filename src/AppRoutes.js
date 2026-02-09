@@ -30,7 +30,7 @@ const AppRoutes = () => {
 		dispatch(loadSettings());
 		dispatch(listProperties({ status: "", location: "", type: "" }));
 		dispatch(listTypes());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>

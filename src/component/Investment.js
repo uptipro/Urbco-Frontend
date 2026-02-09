@@ -1,5 +1,4 @@
 import React from "react";
-import PropertyImg from "../assets/property.png";
 import dateFormat from "dateformat";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../utils/currencyFormat";

@@ -22,7 +22,7 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
 			getAmountToPay();
 			getAvailableBalance();
 		}
-	}, [noOfFractions, plan, percentage]);
+	}, [noOfFractions, plan, percentage, getAmountToPay]);
 
 	useEffect(() => {
 		if (
@@ -33,7 +33,7 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
 			setPercentage(propertyDetail.next_payment);
 			setNoOfFractions(propertyDetail.fractions_bought);
 		}
-	}, []);
+	}, [propertyDetail.fractions_bought]);
 
 	const getAvailableBalance = () => {
 		if (plan) {

@@ -10,7 +10,7 @@ const Checkout = () => {
 	const navigate = useNavigate();
 	const [details, setDetails] = useState({});
 	const [gatewayDetails, setGatewayDetails] = useState({});
-	const [openModal, setOpenModal] = useState(false);
+	// const [openModal, setOpenModal] = useState(false);
 	const [showMobile, setShowMobile] = useState(false);
 
 	const data = useLocation().state;
@@ -23,7 +23,7 @@ const Checkout = () => {
 		} else {
 			navigate("/projects");
 		}
-	}, []);
+	}, [data, navigate]);
 
 	const roundPrice = (val) => {
 		if (val >= 1000000) {
@@ -272,7 +272,6 @@ const Checkout = () => {
 								<CheckoutView
 									propertyDetail={details}
 									onComplete={(res) => {
-										setOpenModal(true);
 										setGatewayDetails(res);
 									}}
 								/>
@@ -282,11 +281,11 @@ const Checkout = () => {
 				</>
 			)}
 			{gatewayDetails && gatewayDetails.tx_ref && (
-				<ModalComponent open={true} toggle={() => setOpenModal(false)}>
+				<ModalComponent open={true} toggle={() => setGatewayDetails({})}>
 					<PaymentGateway
 						initiate={gatewayDetails}
 						onCancel={() => setGatewayDetails({})}
-						onComplete={() => setOpenModal(false)}
+						onComplete={() => setGatewayDetails({})}
 					/>
 				</ModalComponent>
 			)}
