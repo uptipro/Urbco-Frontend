@@ -31,7 +31,7 @@ const Login = () => {
 				navigate("/profile");
 			}
 		}
-	}, [user_details]);
+	}, [user_details, navigate, query, dataState]);
 
 	const submitHandler = async () => {
 		if (email && password) {

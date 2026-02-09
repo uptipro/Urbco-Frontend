@@ -29,7 +29,7 @@ const Profile = () => {
 		} else {
 			dispatch(listInvestments({ id: user_details._id }));
 		}
-	}, [user_details]);
+	}, [user_details, navigate, dispatch]);
 
 	const getInitials = (string) => {
 		let names = string.split(" "),

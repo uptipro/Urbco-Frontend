@@ -20,7 +20,7 @@ const Projects = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 		dispatch(listProperties({ type: pTypes, status, location }));
-	}, [pTypes, location, status]);
+	}, [pTypes, location, status, dispatch]);
 
 	return (
 		<div className="cover-page">

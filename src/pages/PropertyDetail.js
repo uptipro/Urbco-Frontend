@@ -46,11 +46,11 @@ const PropertyDetail = () => {
 			loadDetails();
 		}
 		setNoOfFractions(1);
-	}, []);
+	}, [data, loadDetails]);
 
 	useEffect(() => {
 		calculatorReturns();
-	}, [purchasePlan, noOfFractions]);
+	}, [purchasePlan, noOfFractions, calculatorReturns]);
 
 	const loadDetails = async () => {
 		try {
@@ -380,9 +380,8 @@ const PropertyDetail = () => {
 														<div className="keys">
 															{f.image ? (
 																<img
-																	src={
-																		f.image
-																	}
+																	src={f.image}
+																	alt={f.name || "feature"}
 																/>
 															) : (
 																<span>
