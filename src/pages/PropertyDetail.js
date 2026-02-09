@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Navigation from "../component/Navigation";
 import PropertyImg from "../assets/property2.png";
 import { FaLandmark } from "react-icons/fa";
@@ -38,21 +38,7 @@ const PropertyDetail = () => {
 	const data = useLocation().state;
 	const params = useParams();
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-		if (data && data.property) {
-			setDetails(data.property);
-		} else {
-			loadDetails();
-		}
-		setNoOfFractions(1);
-	}, [data, loadDetails]);
-
-	useEffect(() => {
-		calculatorReturns();
-	}, [purchasePlan, noOfFractions, calculatorReturns]);
-
-	const loadDetails = async () => {
+	const loadDetails = useCallback(async () => {
 		try {
 			setLoad(true);
 			let res = await basicService.getPropertyDetails(params.ref);
@@ -63,9 +49,9 @@ const PropertyDetail = () => {
 		} catch (err) {
 			setLoad(false);
 		}
-	};
+	}, [params.ref]);
 
-	const calculatorReturns = () => {
+	const calculatorReturns = useCallback(() => {
 		if (details.optp) {
 			let cost;
 			if (purchasePlan === "optp") {
@@ -86,7 +72,21 @@ const PropertyDetail = () => {
 			setFractionCost(cost);
 			getInvestmentReturns(cost);
 		}
-	};
+	}, [details, purchasePlan, getInvestmentReturns]);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		if (data && data.property) {
+			setDetails(data.property);
+		} else {
+			loadDetails();
+		}
+		setNoOfFractions(1);
+	}, [data, loadDetails]);
+
+	useEffect(() => {
+		calculatorReturns();
+	}, [purchasePlan, noOfFractions, calculatorReturns]);
 
 	const getInvestmentReturns = (val) => {
 		let total = noOfFractions * val;

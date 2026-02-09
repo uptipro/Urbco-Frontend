@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
 	Link,
-	useLocation,
 	useNavigate,
-	useSearchParams,
 } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import { displayError } from "../redux/error";
 import basicService from "../redux/basic/basicService";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { toast } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import { loginInvestor } from "../redux/basic/basicSlice";
+import {  useSelector } from "react-redux";
 
 const ForgotPassword = () => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const { user_details } = useSelector((state) => state.basic);
@@ -33,7 +29,7 @@ const ForgotPassword = () => {
 		if (user_details && user_details._id) {
 			navigate("/profile");
 		}
-	}, [user_details]);
+	}, [user_details, navigate]);
 
 	const forgotHandler = async () => {
 		if (email) {
