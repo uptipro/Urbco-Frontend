@@ -48,7 +48,7 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
       getAmountToPay();
       getAvailableBalance();
     }
-  }, [noOfFractions, plan, percentage, getAmountToPay]);
+  }, [noOfFractions, plan, percentage, getAmountToPay, getAvailableBalance]);
 
   useEffect(() => {
     if (
@@ -59,7 +59,12 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
       setPercentage(propertyDetail.next_payment);
       setNoOfFractions(propertyDetail.fractions_bought);
     }
-  }, [propertyDetail.fractions_bought, propertyDetail.investment]);
+  }, [
+    propertyDetail.fractions_bought,
+    propertyDetail.investment,
+    propertyDetail.investment_plan,
+    propertyDetail.next_payment,
+  ]);
 
   const getAvailableBalance = () => {
     if (plan) {

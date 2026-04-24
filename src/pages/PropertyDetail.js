@@ -51,6 +51,19 @@ const PropertyDetail = () => {
     }
   }, [params.ref]);
 
+  const getInvestmentReturns = useCallback(
+    (val) => {
+      let total = noOfFractions * val;
+      setTotalInvestment(total);
+      let totalPercent =
+        details.rentals.annual_yield_percent ||
+        0 + details.capital_appreciation_percent ||
+        0;
+      setReturns(totalPercent > 1 ? (total * totalPercent) / 100 : total);
+    },
+    [noOfFractions, details],
+  );
+
   const calculatorReturns = useCallback(() => {
     if (details.optp) {
       let cost;
@@ -87,16 +100,6 @@ const PropertyDetail = () => {
   useEffect(() => {
     calculatorReturns();
   }, [purchasePlan, noOfFractions, calculatorReturns]);
-
-  const getInvestmentReturns = (val) => {
-    let total = noOfFractions * val;
-    setTotalInvestment(total);
-    let totalPercent =
-      details.rentals.annual_yield_percent ||
-      0 + details.capital_appreciation_percent ||
-      0;
-    setReturns(totalPercent > 1 ? (total * totalPercent) / 100 : total);
-  };
 
   const roundPrice = (val) => {
     let result = Intl.NumberFormat("en-US", {
