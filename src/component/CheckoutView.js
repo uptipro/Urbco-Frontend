@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { formatCurrency } from "../utils/currencyFormat";
 import basicService from "../redux/basic/basicService";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
     propertyDetail.total_fractions - propertyDetail.fractions_taken,
   );
 
-  const getAmountToPay = () => {
+  const getAmountToPay = useCallback(() => {
     let totalAmount = propertyDetail.cost_per_fraction * noOfFractions;
     let amountPaid;
     if (plan === "csp") {
@@ -41,7 +41,17 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
       amountPaid = totalAmount;
     }
     setAmount(amountPaid);
-  };
+  }, [plan, noOfFractions, percentage, propertyDetail]);
+
+  const getAvailableBalance = useCallback(() => {
+    if (plan) {
+      let availableFractions = Math.round(
+        propertyDetail.total_fractions *
+          (propertyDetail[plan].volume_available / 100),
+      );
+      setAvailable(availableFractions - propertyDetail[plan].fractions_taken);
+    }
+  }, [plan, propertyDetail]);
 
   useEffect(() => {
     if (plan) {
@@ -66,15 +76,7 @@ const CheckoutView = ({ propertyDetail, onComplete }) => {
     propertyDetail.next_payment,
   ]);
 
-  const getAvailableBalance = () => {
-    if (plan) {
-      let availableFractions = Math.round(
-        propertyDetail.total_fractions *
-          (propertyDetail[plan].volume_available / 100),
-      );
-      setAvailable(availableFractions - propertyDetail[plan].fractions_taken);
-    }
-  };
+
 
   const initiatePayment = async () => {
     if (amount > 0) {
